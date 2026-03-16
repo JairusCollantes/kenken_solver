@@ -1,3 +1,6 @@
+import tkinter as tk
+from tkinter import messagebox, simpledialog
+
 size = 4 #int(input("Enter the size of the grid: "))
 
 class Group:
@@ -76,3 +79,12 @@ if solve(solution, sample):
     print("Solution found:")
     for r in solution:
         print(r)
+        
+root = tk.Tk()
+root.title("KenKen Solver")
+for i in range(size):
+    for c in range(size):
+        b = tk.Button(root, width=6 , height=3, text= str(solution[i][c]))
+        b.grid(row=i, column=c)
+tk.Button(root, text="Solve", command=lambda: solve(solution, sample)).grid(row=size, column=0, columnspan=size)
+root.mainloop()
