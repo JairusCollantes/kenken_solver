@@ -17,7 +17,7 @@ def is_valid(grid, r, col, num):
             return False
     return True
     
-def grid_solver(grid, cells):
+def grid_solver(grid, cells): #This is to solve the values of the grouped cells
     values = []
     for r, c  in cells.cel:
         v = grid[r][c]
