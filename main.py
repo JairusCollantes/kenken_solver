@@ -9,7 +9,7 @@ class Group:
         self.target = target
         self.op = op
 
-def is_valid(grid, r, col, num):
+def is_valid(grid, r, col, num): #this checks if it is allowed to place the number in the cell
     if num in grid[r]:
         return False
     for i in range(size):
