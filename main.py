@@ -3,7 +3,7 @@ from tkinter import messagebox, simpledialog
 
 size = 4 #int(input("Enter the size of the grid: "))
 
-class Group:
+class Group:  # Grouped that has a op and target number
     def __init__(self, cel , target, op):
         self.cel = cel
         self.target = target
