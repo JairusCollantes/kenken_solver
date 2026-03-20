@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox, simpledialog
 
-size = 4 #int(input("Enter the size of the grid: "))
+size = 25 #int(input("Enter the size of the grid: "))
 
 cells = {}
 selected_cells = []
@@ -37,6 +37,14 @@ def grid_solver(grid): #This is to solve the values of the grouped cells
     elif cells.op == '/':
         return (max(values) / min(values)) == cells.target
     return False
+
+def select(r,c):
+    if (r,c) in selected_cells:
+        selected_cells.remove((r,c))
+        cells[(r,c)].config(bg="white")
+    else:
+        selected_cells.append((r,c))
+        cells[(r,c)].config(bg="pink")
     
 def solve(grid, cells):
     # This function will contain the logic to solve the KenKen puzzle
@@ -58,8 +66,10 @@ root = tk.Tk()
 root.title("KenKen Solver")
 for i in range(size):
     for c in range(size):
-        b = tk.Button(root, width=6 , height=3, text="")
+        b = tk.Button(root, width=6 , command = lambda r=i ,c=c: select(r,c), height=3, text="", bg = "white")
         b.grid(row=i, column=c)
+        b.grid(row=i, column=c)
+        cells[(i,c)] = b
 tk.Button(root,text="Create Cage",command= None).grid(row=size,column=0,columnspan=2)
 tk.Button(root,text="Solve Puzzle",command=None).grid(row=size,column=2,columnspan=2)
 root.mainloop()
