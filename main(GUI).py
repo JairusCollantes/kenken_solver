@@ -3,12 +3,6 @@ from tkinter import messagebox, simpledialog
 
 size = 4 #int(input("Enter the size of the grid: "))
 
-class Group:  # Grouped that has a op and target number
-    def __init__(self, cel , target, op):
-        self.cel = cel
-        self.target = target
-        self.op = op
-
 def is_valid(grid, r, col, num): #this checks if it is allowed to place the number in the cell
     if num in grid[r]:
         return False
@@ -53,30 +47,13 @@ def solve(grid, cells):
                         grid[i][j] = 0
                 return False
     return True
-
-# cells =[]
-# cages = int(input("Enter the number of cages: "))
-# for i in range(1,cages + 1):
-#     cell =input("Enter the cell coordinates (row colomn): ")
-#     coor = list(map(int, cell.split()))
-#     target = int(input("Enter the target number: "))
-#     op = input("Enter the operation (+, -, *, /): ")
-#     cells.append(Group(coor, target, op))
-
-sample = [
-    Group([(0,0), (1,0),(2,0)], 24, '*'), 
-    Group([(0,1), (0,2)], 3, '+'), 
-    Group([(1,1), (1,2)], 7, '+'), 
-    Group([(2,1), (2,2)], 5, '+'), 
-    Group([(0,3), (1,3),(2,3)], 6, '+'), 
-    Group([(3,0), (3,1)], 2, '-'), 
-    Group([(3,2), (3,3)], 2, '/'), 
-]
-solution = [[0] * size for _ in range(size)]
-for r in solution:
-    print(r)
-if solve(solution, sample):
-    print("Solution found:")
-    for r in solution:
-        print(r)
-        
+solution = None
+sample = None
+root = tk.Tk()
+root.title("KenKen Solver")
+for i in range(size):
+    for c in range(size):
+        b = tk.Button(root, width=6 , height=3, text="")
+        b.grid(row=i, column=c)
+tk.Button(root, text="Solve", command=lambda: solve(solution, sample)).grid(row=size, column=0, columnspan=size)
+root.mainloop()
