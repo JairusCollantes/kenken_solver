@@ -3,7 +3,12 @@ from tkinter import messagebox, simpledialog
 
 size = 4 #int(input("Enter the size of the grid: "))
 
-def is_valid(grid, r, col, num): #this checks if it is allowed to place the number in the cell
+cells = {}
+selected_cells = []
+cages = []
+grid = [[0] * size for _ in range(size)]
+
+def is_valid( r, col, num): #this checks if it is allowed to place the number in the cell
     if num in grid[r]:
         return False
     for i in range(size):
@@ -11,7 +16,7 @@ def is_valid(grid, r, col, num): #this checks if it is allowed to place the numb
             return False
     return True
     
-def grid_solver(grid, cells): #This is to solve the values of the grouped cells
+def grid_solver(grid): #This is to solve the values of the grouped cells
     values = []
     for r, c  in cells.cel:
         v = grid[r][c]
@@ -55,5 +60,6 @@ for i in range(size):
     for c in range(size):
         b = tk.Button(root, width=6 , height=3, text="")
         b.grid(row=i, column=c)
-tk.Button(root, text="Solve", command=lambda: solve(solution, sample)).grid(row=size, column=0, columnspan=size)
+tk.Button(root,text="Create Cage",command= None).grid(row=size,column=0,columnspan=2)
+tk.Button(root,text="Solve Puzzle",command=None).grid(row=size,column=2,columnspan=2)
 root.mainloop()
