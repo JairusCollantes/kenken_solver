@@ -34,7 +34,7 @@ def grid_solver(cages): #This is to solve the values of the grouped cells
         product = 1
         for v in values:
             product *= v
-        return product == target if len(values) == len(cages[0]) else sum(values) <= target
+        return product == target if len(values) == len(cages[0]) else product <= target
     elif op == '/':
         a,b = values
         return (max(a,b) / min(a,b)) == target
